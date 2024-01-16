@@ -35,7 +35,6 @@ function tabColorize(rowId = '') {
         var paymentFullStatus = document.getElementById('paymentFullStatus-' + rowId).checked;
         var a_m_v = document.getElementById('card_available_money_value').innerHTML;
 
-
         a_m_v = parseFloat(a_m_v.replace(',', '.'));
 
         if (statusId) {

@@ -448,7 +448,7 @@ def create_news():
                     not_save_val = session['n_s_v_create_news'] if session.get(
                         'n_s_v_create_news') else {}
 
-                    conn, cursor = conn_cursor_init_dict('payments')
+                    conn, cursor = conn_cursor_init_dict('users')
 
                     # Список категорий
                     cursor.execute(
@@ -489,7 +489,7 @@ def create_news():
                         }
                         return redirect(url_for('.create_news'))
 
-                    conn, cursor = conn_cursor_init_dict('payments')
+                    conn, cursor = conn_cursor_init_dict('users')
 
                     query = """
                                 INSERT INTO news_alerts (

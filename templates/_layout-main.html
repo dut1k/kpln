@@ -60,7 +60,8 @@
         </div>
         {% if tab_rows %}
         <div class="progress-bar">
-            <div class="progress" style="width: {{(applications|length/ tab_rows ) * 100}}%"></div>
+<!--            <div class="progress" style="width: {-{(applications|length/ tab_rows ) * 100}-}%"></div>-->
+            <div class="progress"></div>
         </div>
         {% else %}
         {% endif %}
