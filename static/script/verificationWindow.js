@@ -63,6 +63,7 @@ saveEditBtn? saveEditBtn.addEventListener('click', showDialogSEB): 1;
 
 nextDialogBtn? nextDialogBtn.addEventListener('click', function () {
 
+    // Нажата кнопка отправить и подтверждён выбор
     if (paragraphQuestion.id === 'pqDSB') {
         paymentForm.submit();
 

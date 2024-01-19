@@ -69,12 +69,18 @@ function sortTable(column, type_col = 'str') {
         }
     }
 
-    // у всех чекбоксов меняем значение value
+    // у всех чекбоксов меняем значение value и переименовываем название строк
     if (checkbox_col_num.length) {
         for (i = 1; i < rows.length; i++) {
             for (j of checkbox_col_num) {
                 rows[i].getElementsByTagName("td")[j].getElementsByTagName("input")[0].setAttribute("value", i);
             }
+            rows[i].id = `row-${i-1}`;
+        }
+    }
+    else {
+        for (i = 1; i < rows.length; i++) {
+            rows[i].id = `row-${i-1}`;
         }
     }
 

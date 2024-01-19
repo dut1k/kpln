@@ -47,8 +47,6 @@ function filterTable() {
             if (data.status === 'success') {
                 document.getElementById('sortCol-1').textContent = data.sort_col['col_1'][0]
                 document.getElementById('sortCol-1_val').textContent = data.sort_col['col_1'][1]
-                document.getElementById('sortCol-2').textContent = data.sort_col['col_2'][0]
-                document.getElementById('sortCol-2_val').textContent = data.sort_col['col_2'][1]
                 document.getElementById('sortCol-id').textContent = data.sort_col['col_id'][0]
                 document.getElementById('sortCol-id_val').textContent = data.sort_col['col_id'][1]
 
@@ -59,11 +57,11 @@ function filterTable() {
                         page_url === 'payment-approval-list' ||
                         page_url === 'payment-paid-list' ||
                         page_url === 'payment-list') {
-                    paymentList2(data.sort_col['col_1'][0]);
+                    paymentList(data.sort_col['col_1'][0]);
                 }
                 else if (
                         page_url === 'payment-pay') {
-                    paymentPay2(data.sort_col['col_1'][0]);
+                    paymentPay(data.sort_col['col_1'][0]);
                 }
 
             }
