@@ -603,9 +603,16 @@ header .progress-bar {
   background-color: #c3c7c7;
 }
 header .progress {
-  height: 100%;
+  position: absolute;
+  height: 4px;
   background-color: #4285f4;
   width: 0;
+}
+header .progress2 {
+  position: absolute;
+  height: 4px;
+  width: 0;
+  background-color: #c3c7c7;
 }
 
 #menu {

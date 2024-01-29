@@ -1,36 +1,22 @@
 function filterTable() {
-//    var filter_input = document.querySelectorAll('[id*="filter-input-"]');
-//    var filterValsList = []; // Значения фильтров
-//    var filterCol = []; // Список фильтруемых столбцов
-//
-//    for (var i=0; i<filter_input.length; i++) {
-//        filterValsList.push(filter_input[i].value.toUpperCase());
-//        filter_input[i].value? filterCol.push(i): 1;
-//    }
     var table = document.getElementById("payment-table");
     for (var i = 1; i<table.rows.length;) {
         table.deleteRow(i);
     }
-    row_0 = table.getElementsByTagName("tr")[0];
-    var col_cnt = row_0.getElementsByTagName("th").length
-    for (var i = 0; i < col_cnt; i++) {
-        row_0.getElementsByTagName("th")[i].getElementsByClassName("arrow_sort")[0].innerText = ''
-    }
+
     var page_url = document.URL.substring(document.URL.lastIndexOf('/')+1);
-    if (page_url === 'payment-approval') {
-        row_0.getElementsByTagName("th")[6].getElementsByClassName("arrow_sort")[0].innerText = '▲';
-    }
-    else if (page_url === 'payment-approval-list') {
-        row_0.getElementsByTagName("th")[12].getElementsByClassName("arrow_sort")[0].innerText = '▼';
-    }
-    else if (page_url === 'payment-paid-list') {
-        row_0.getElementsByTagName("th")[12].getElementsByClassName("arrow_sort")[0].innerText = '▼';
-    }
-    else if (page_url === 'payment-list') {
-        row_0.getElementsByTagName("th")[10].getElementsByClassName("arrow_sort")[0].innerText = '▼';
-    }
-    else if (page_url === 'payment-pay') {
-        row_0.getElementsByTagName("th")[13].getElementsByClassName("arrow_sort")[0].innerText = '▲';
+
+    var sortCol_1 = document.getElementById('sortCol-1').textContent;
+    var sortCol_1_val = document.getElementById('sortCol-1_val').textContent;
+    var sortCol_id_val = document.getElementById('sortCol-id_val').textContent;
+
+    var filter_input = document.querySelectorAll('[id*="filter-input-"]');
+    var filterValsList = []; // Значения фильтров
+
+    for (var i=0; i<filter_input.length; i++) {
+        if (filter_input[i].value) {
+            filterValsList.push([i, filter_input[i].value]);
+        }
     }
 
     fetch('/get-first-pay', {
@@ -39,6 +25,11 @@ function filterTable() {
                 },
                 "method": "POST",
                 "body": JSON.stringify({
+                    'limit': 1,
+                    'sort_col_1': sortCol_1,
+                    'sort_col_1_val': sortCol_1_val,
+                    'sort_col_id_val': sortCol_id_val,
+                    'filterValsList': filterValsList,
                     'page_url': page_url,
                 })
     })
@@ -47,8 +38,7 @@ function filterTable() {
             if (data.status === 'success') {
                 document.getElementById('sortCol-1').textContent = data.sort_col['col_1'][0]
                 document.getElementById('sortCol-1_val').textContent = data.sort_col['col_1'][1]
-                document.getElementById('sortCol-id').textContent = data.sort_col['col_id'][0]
-                document.getElementById('sortCol-id_val').textContent = data.sort_col['col_id'][1]
+                document.getElementById('sortCol-id_val').textContent = data.sort_col['col_id']
 
                 if (page_url === 'payment-approval') {
                     paymentApproval(data.sort_col['col_1'][0]);

@@ -47,8 +47,7 @@
 
     <div id="sortCol-1" hidden>{{ sort_col['col_1'][0] }}#{{ sort_col['col_1'][1] }}</div>
     <div id="sortCol-1_val" hidden>{{ sort_col['col_1'][2] }}</div>
-    <div id="sortCol-id" hidden>{{ sort_col['col_id'][0] }}#{{ sort_col['col_id'][1] }}</div>
-    <div id="sortCol-id_val" hidden>{{ sort_col['col_id'][2] }}</div>
+    <div id="sortCol-id_val" hidden>{{ sort_col['col_id'] }}</div>
 
     <form id="paymentForm" action="/payment-pay" method="POST">
         <div class="paymentFormBtn">
@@ -61,7 +60,7 @@
                 <thead class="fix_thead">
                     <tr>
                         <th class="th_select" {% if '0' in setting_users %}hidden{% endif %}>
-                            <div onclick="sortTable(0, 'num')">ВЫБОР&nbsp;<span class="arrow_sort"></span></div>
+                            <div>ВЫБОР&nbsp;<span class="arrow_sort"></span></div>
                             <input type="text" id="filter-input-0" hidden readonly>
                         </th>
                         <th class="th_category" {% if '1' in setting_users %}hidden{% endif %}>
@@ -117,7 +116,7 @@
                             <input placeholder="Поиск" type="text" id="filter-input-13" onchange="filterTable()">
                         </th>
                         <th class="th_save_pay" {% if '14' in setting_users %}hidden{% endif %}>
-                            <div onclick="sortTable(14, 'str')">ДО ПОЛНОЙ ОПЛАТЫ&nbsp;<span class="arrow_sort"></span></div>
+                            <div>ДО ПОЛНОЙ ОПЛАТЫ&nbsp;<span class="arrow_sort"></span></div>
                             <input type="text" id="filter-input-14" hidden readonly>
                         </th>
                     </tr>
